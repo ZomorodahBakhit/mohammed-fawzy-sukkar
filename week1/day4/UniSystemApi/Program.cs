@@ -1,9 +1,20 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using AutoWrapper;
 using Microsoft.EntityFrameworkCore;
+using UniSystemApi.Core.Modules;
 using UniSystemApi.Data;
+using UniSystemApi.Data.Modules;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
+{
+    containerBuilder.RegisterModule(new RepositoryModule());
+    containerBuilder.RegisterModule(new ServiceModule());
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -25,6 +36,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseApiResponseAndExceptionWrapper();
 
 app.UseAuthorization();
 

@@ -14,11 +14,4 @@
     <ProjectReference Include="..\UniSystemApi.Data\UniSystemApi.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Forms\" />
-    <Folder Include="DTOs\" />
-    <Folder Include="Modules\" />
-    <Folder Include="Services\" />
-  </ItemGroup>
-
 </Project>

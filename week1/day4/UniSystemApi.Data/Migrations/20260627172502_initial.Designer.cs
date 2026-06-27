@@ -11,7 +11,7 @@ using UniSystemApi.Data;
 namespace UniSystemApi.Data.Migrations
 {
     [DbContext(typeof(UniversityDbContext))]
-    [Migration("20260627155750_initial")]
+    [Migration("20260627172502_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -32,13 +32,15 @@ namespace UniSystemApi.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Email")
+                    b.Property<string>("Email")
+                        .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("Name")
+                    b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(100)
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
