@@ -7,6 +7,7 @@ using UniSystemApi.Core.DTOs;
 using UniSystemApi.Core.Forms;
 using UniSystemApi.Data.Entities;
 using UniSystemApi.Data.Repositories;
+using UniversitySystemSummer.Core.Validations;
 
 namespace UniSystemApi.Core.Services
 {
@@ -34,6 +35,7 @@ namespace UniSystemApi.Core.Services
             {
                 Id = course.Id,
                 Title = course.Title,
+                Weight = course.Weight,
                 StartDate = course.StartDate,
                 EndDate = course.EndDate
             };
@@ -45,15 +47,18 @@ namespace UniSystemApi.Core.Services
             {
                 Id = c.Id,
                 Title = c.Title,
+                Weight = c.Weight,
                 StartDate = c.StartDate,
                 EndDate = c.EndDate
             }).ToList();
         }
         public void Create(CreateCourseForm form)
         {
+            FormValidator.Validate(form);
             var course = new Course
             {
                 Title = form.Title,
+                Weight = form.Weight,
                 StartDate = form.StartDate,
                 EndDate = form.EndDate
             };
@@ -65,6 +70,7 @@ namespace UniSystemApi.Core.Services
             if (course != null)
             {
                 course.Title = form.Title ?? course.Title;
+                course.Weight = form.Weight ?? course.Weight;
                 course.StartDate = form.StartDate ?? course.StartDate;
                 course.EndDate = form.EndDate ?? course.EndDate;
 

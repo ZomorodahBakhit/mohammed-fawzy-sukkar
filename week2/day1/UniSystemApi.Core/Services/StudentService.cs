@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UniSystemApi.Core.DTOs;
+using UniSystemApi.Core.Exceptions;
 using UniSystemApi.Core.Forms;
 using UniSystemApi.Data.Entities;
 using UniSystemApi.Data.Repositories;
+using UniversitySystemSummer.Core.Validations;
 
 namespace UniSystemApi.Core.Services
 {
@@ -49,6 +51,12 @@ namespace UniSystemApi.Core.Services
         }
         public void Create(CreateStudentForm form)
         {
+            FormValidator.Validate(form);
+            var ExistSydents = _repository.GetAll();
+            if(ExistSydents.Any(s => s.Email == form.Email))
+            {
+                throw new BusinessException("Email address is already exist");
+            }
             var student = new Student
             {
                 Name = form.Name,

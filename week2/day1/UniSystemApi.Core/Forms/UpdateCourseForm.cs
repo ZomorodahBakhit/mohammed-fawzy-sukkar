@@ -9,6 +9,7 @@ namespace UniSystemApi.Core.Forms
     public class UpdateCourseForm
     {
         public string ?Title { get; set; }
+        public int ?Weight { get; set; }
         public DateTime ?StartDate { get; set; }
         public DateTime ?EndDate { get; set; }
     }

@@ -16,6 +16,7 @@ namespace UniSystemApi.Data.Configurations
         {
             builder.ToTable("Courses");
             builder.Property(c => c.Title).IsRequired().HasMaxLength(100);
+            builder.Property(c => c.Weight).IsRequired().HasMaxLength(100);
             builder.Property(c => c.StartDate).IsRequired();
             builder.Property(c => c.EndDate).IsRequired();
         }

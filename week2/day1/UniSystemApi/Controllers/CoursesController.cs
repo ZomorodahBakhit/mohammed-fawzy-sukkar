@@ -18,29 +18,43 @@ namespace UniSystemApi.Controllers
 
         }
         [HttpGet("{id}")]
-        public ApiResponse GetById(int id)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]        public ApiResponse GetById(int id)
         {
             var course = _service.GetById(id);
             return new ApiResponse(course);
         }
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ApiResponse GetAll()
         {
             return new ApiResponse(_service.GetAll());
         }
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ApiResponse Create([FromBody] CreateCourseForm form)
         {
             _service.Create(form);
             return new ApiResponse("Course created successfully");
         }
         [HttpPut("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ApiResponse Update(int id, [FromBody] UpdateCourseForm form)
         {
             _service.Update(id, form);
             return new ApiResponse("Course updated successfully");
         }
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ApiResponse Delete(int id)
         {
             _service.Delete(id);

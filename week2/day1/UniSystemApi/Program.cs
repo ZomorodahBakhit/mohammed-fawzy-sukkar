@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using UniSystemApi.Core.Modules;
 using UniSystemApi.Data;
 using UniSystemApi.Data.Modules;
+using UniSystemApi.Filter;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,7 +17,7 @@ builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder =>
     containerBuilder.RegisterModule(new ServiceModule());
 });
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options => options.Filters.Add<ApiExceptionFilter>());
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
