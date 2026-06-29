@@ -2,6 +2,7 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using AutoWrapper;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
 using UniSystemApi.Core.Modules;
 using UniSystemApi.Data;
 using UniSystemApi.Data.Modules;
@@ -27,6 +28,12 @@ builder.Services.AddDbContext<UniversityDbContext>(options =>
         b => b.MigrationsAssembly("UniSystemApi.Data")
     ));
 
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .WriteTo.File("Logs/log-.txt", rollingInterval: RollingInterval.Day)
+    .CreateLogger();
+
+builder.Host.UseSerilog();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

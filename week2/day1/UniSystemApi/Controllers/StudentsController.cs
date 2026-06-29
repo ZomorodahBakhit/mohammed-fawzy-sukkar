@@ -9,13 +9,14 @@ namespace UniSystemApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class StudentsController : ControllerBase
+    public class StudentController : ControllerBase
     {
         private readonly IStudentService _service;
-        public StudentsController(IStudentService studentService)
+        private readonly ILogger<StudentController> _logger;
+        public StudentController(IStudentService studentService, ILogger<StudentController> logger)
         {
             _service = studentService;
-
+            _logger = logger;
         }
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -23,6 +24,7 @@ namespace UniSystemApi.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ApiResponse GetById(int id)
         {
+            _logger.LogInformation("Get Student By Id");
             var student = _service.GetById(id);
             return new ApiResponse(student);
         }
@@ -32,6 +34,7 @@ namespace UniSystemApi.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ApiResponse GetAll()
         {
+            _logger.LogInformation("Get All Student");
             return new ApiResponse(_service.GetAll());
         }
         [HttpPost]
@@ -40,6 +43,7 @@ namespace UniSystemApi.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ApiResponse Create([FromBody] CreateStudentForm form)
         {
+            _logger.LogInformation("Create Student");
             _service.Create(form);
             return new ApiResponse("Student created successfully");
         }
@@ -49,6 +53,7 @@ namespace UniSystemApi.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ApiResponse Update(int id, [FromBody] UpdateStudentForm form)
         {
+            _logger.LogInformation("Update Student");
             _service.Update(id, form);
             return new ApiResponse("Student updated successfully");
         }
@@ -58,6 +63,7 @@ namespace UniSystemApi.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public ApiResponse Delete(int id)
         {
+            _logger.LogInformation("Delete Student");
             _service.Delete(id);
             return new ApiResponse("Student deleted successfully");
         }
