@@ -1,0 +1,13 @@
+2026-06-29 12:06:48.909 +03:00 [INF] Now listening on: https://localhost:7088
+2026-06-29 12:06:48.958 +03:00 [INF] Now listening on: http://localhost:5003
+2026-06-29 12:06:49.005 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-06-29 12:06:49.006 +03:00 [INF] Hosting environment: Development
+2026-06-29 12:06:49.007 +03:00 [INF] Content root path: C:\Users\LAPTOP KING\source\repos\8890\week2\day1\UniSystemApi
+2026-06-29 12:06:49.593 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7088/swagger/index.html - null null
+2026-06-29 12:06:49.812 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7088/swagger/index.html - 200 null text/html;charset=utf-8 220.1162ms
+2026-06-29 12:06:49.817 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7088/_framework/aspnetcore-browser-refresh.js - null null
+2026-06-29 12:06:49.819 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7088/_vs/browserLink - null null
+2026-06-29 12:06:49.832 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7088/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 15.2546ms
+2026-06-29 12:06:49.876 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7088/_vs/browserLink - 200 null text/javascript; charset=UTF-8 57.3443ms
+2026-06-29 12:06:49.904 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7088/swagger/v1/swagger.json - null null
+2026-06-29 12:06:49.930 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7088/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 25.5084ms
